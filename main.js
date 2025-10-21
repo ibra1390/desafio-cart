@@ -99,3 +99,27 @@ const productos = [
         "price": 6.50
      }
 ];
+
+
+// --- FUNCIONES PARA CONTROLAR EL BOTÓN DE CANTIDAD ---
+
+function renderBotonCantidad(button, cantidad) {
+  // Esta función reemplaza el contenido del botón según la cantidad
+  if (cantidad > 0) {
+    button.innerHTML = `
+      <div class="flex items-center gap-4 bg-orange-950 text-white px-4 py-2 rounded-full">
+        <button class="decrease text-xl font-bold">−</button>
+        <span>${cantidad}</span>
+        <button class="increase text-xl font-bold">+</button>
+      </div>
+    `;
+  } else {
+    button.innerHTML = `
+      <button class="flex items-center gap-2 px-4 py-2 border border-orange-950 text-orange-950 font-medium rounded-full bg-white shadow hover:bg-orange-950 hover:text-white transition">
+        <img src="./assets/images/icon-add-to-cart.svg" class="w-5 h-5" />
+        Add to Cart
+      </button>
+    `;
+  }
+}
+
