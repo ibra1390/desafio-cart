@@ -100,7 +100,6 @@ const productos = [
      }
 ];
 
-
 // --- FUNCIONES PARA CONTROLAR EL BOTÓN DE CANTIDAD ---
 
 function renderBotonCantidad(button, cantidad) {
