@@ -1,45 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./output.css">
-  <title>Document</title>
+  <title>Order Confirmed</title>
+  
 </head>
 
-<body class=" flex items-center justify-center min-h-screen bg-black/50">
+<body class="bg-black/50 flex items-center justify-center min-h-screen ">
 
   
-  <div class="bg-white rounded-2xl shadow-xl p-6 w-[360px] text-center space-y-4 ">
+  <div class="bg-white rounded-2xl shadow-lg p-6 w-[380px] text-center space-y-4">
+    
     
     <div class="flex justify-center">
       <div class="w-10 h-10 flex items-center justify-center bg-green-100 rounded-full">
         <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
         </svg>
       </div>
     </div>
 
     
-    <h2 class="text-2xl font-bold text-brown-800">Order Confirmed</h2>
+    <h2 class="text-2xl font-extrabold text-[#3b1f0e]">Order Confirmed</h2>
     <p class="text-gray-500 text-sm">We hope you enjoy your food!</p>
 
     
-    <div id="order-list" class="bg-gray-50 rounded-lg p-4 space-y-3 text-left"></div>
- 
-    <div class="flex justify-between border-t border-gray-200 pt-3">
-      <p class="font-semibold text-gray-700">Order Total</p>
-      <p id="order-total" class="font-bold text-xl text-gray-800">$0.00</p>
+    <div class="bg-[#fdf7f3] rounded-lg p-4 space-y-3 text-left">
+      
+      
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="../assets/images/image-baklava-thumbnail.jpg" alt="pistachio blacaba" class="w-10 h-10 rounded-md">
+          <div>
+            <p class="font-semibold text-gray-800">Pistachos Baklava</p>
+            <p class="text-sm text-gray-500"><span class="text-[#b45309] font-semibold">1x</span> <span class="text-gray-400"> $4.00</span></p>
+          </div>
+        </div>
+        <p class="font-semibold text-gray-700">$4.00</p>
+      </div>
+
+     
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="../assets/images/image-brownie-thumbnail.jpg" alt="Salted " class="w-10 h-10 rounded-md">
+          <div>
+            <p class="font-semibold text-gray-800">Salted Caramel Brownie </p>
+            <p class="text-sm text-gray-500"><span class="text-[#b45309] font-semibold">4x</span> <span class="text-gray-400"> $20.00</span></p>
+          </div>
+        </div>
+        <p class="font-semibold text-gray-700">$5.00</p>
+      </div>
+
+      
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+          <img src="../assets/images/image-cake-thumbnail.jpg" alt="Red Velve Cake" class="w-10 h-10 rounded-md">
+          <div>
+            <p class="font-semibold text-gray-800">Red Velve Cake</p>
+            <p class="text-sm text-gray-500"><span class="text-[#b45309] font-semibold">2x</span> <span class="text-gray-400">@ $6.50</span></p>
+          </div>
+        </div>
+        <p class="font-semibold text-gray-700">$13.00</p>
+      </div>
+
+      
+      <div class="flex justify-between border-t border-gray-200 pt-3">
+        <p class="font-semibold text-gray-700">Order Total</p>
+        <p class="font-extrabold text-xl text-gray-800">$46.50</p>
+      </div>
     </div>
 
-   
-    <button class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 rounded-full transition">
+    
+    <button class="w-full bg-[#c8501a] hover:bg-[#b04518] text-white font-semibold py-3 rounded-full transition">
       Start New Order
     </button>
+
   </div>
 
- 
-  
 </body>
 </html>
 
