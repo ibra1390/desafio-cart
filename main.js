@@ -91,7 +91,7 @@ const products = [
 
 let contenedor = document.querySelector(".productos-container");
 
-products.forEach(({ name, image, category, price }) => {
+products.forEach(({ name, image, category, price }, index) => {
   contenedor.innerHTML += `
 <div class="max-w-xs rounded-xl overflow-hidden">
               <div class="relative">
@@ -100,9 +100,10 @@ products.forEach(({ name, image, category, price }) => {
                   class="w-full h-48 object-cover"
                 />
                 <div class="absolute inset-x-0 -bottom-6 flex justify-center">
-                  <button
-                    class="flex items-center gap-2 px-4 py-2 border border-orange-950 text-orange-950 font-medium rounded-full bg-white shadow hover:bg-orange-950 hover:text-white transition"
-                  >
+      <button
+        class="add-cart flex items-center gap-2 px-4 py-2 border border-orange-950 text-orange-950 font-medium rounded-full bg-white shadow hover:bg-orange-950 hover:text-white transition"
+        data-index="${index}" 
+      >
                     <img
                       src="./assets/images/icon-add-to-cart.svg"
                       class="w-5 h-5"
@@ -122,3 +123,86 @@ products.forEach(({ name, image, category, price }) => {
             </div>
 `;
 });
+
+const carrito = document.querySelector(".carrito");
+let cartItems = [];
+document.querySelectorAll(".add-cart").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const i = e.currentTarget.dataset.index;
+    const product = products[i];
+    addCarrito(product);
+  });
+});
+
+function addCarrito(product) {
+  const existe = cartItems.find((i) => i.name === product.name);
+  if (existe) {
+    existe.quantity++;
+    existe.total = existe.quantity * existe.price;
+  } else {
+    cartItems.push({ ...product, quantity: 1, total: product.price });
+  }
+  actualizar();
+}
+
+function removeItem(name) {
+  cartItems = cartItems.filter((item) => item.name !== name);
+  actualizar();
+}
+
+function actualizar() {
+  if (cartItems.length === 0) {
+    carrito.innerHTML = `
+      <img src="assets/images/illustration-empty-cart.svg" />
+      <p class="text-orange-950">Your added items will appear here</p>
+    `;
+    document.querySelector("h3").textContent = `Your Cart(0)`;
+    return;
+  }
+
+  let html = "";
+  let total = 0;
+  let cantidad = 0;
+
+  cartItems.forEach((i) => {
+    total += i.total;
+    cantidad += i.quantity;
+    html += `
+      <div class="flex justify-between items-center mb-2">
+        <div>
+          <h4 class="text-orange-950 font-semibold">${i.name}</h4>
+          <p class="text-gray-500 text-sm">
+            ${i.quantity}x <span class="text-orange-700">@ $${i.price.toFixed(
+      2
+    )}</span> 
+            <span class="font-semibold text-orange-950">$${i.total.toFixed(
+              2
+            )}</span>
+          </p>
+        </div>
+        <button class="text-gray-400 hover:text-red-600 text-xl" onclick="removeItem('${
+          i.name
+        }')">  <img src="./assets/images/icon-remove-item.svg"
+                      class="w-5 h-5"
+                    />   </button>
+      </div>
+    `;
+  });
+
+  carrito.innerHTML = `
+    ${html}
+    <hr class="my-3">
+    <div class="flex justify-between text-orange-950 font-bold">
+      <p>Order Total </p>
+      <p>&nbsp;$${total.toFixed(2)}</p>
+    </div>
+    <div class="text-sm text-gray-600 mt-2 bg-rose-50 p-2 rounded-md">
+    <span class="flex flex-row" ><img src="./assets/images/icon-carbon-neutral.svg"
+                      class="w-5 h-5"
+                    /> This is a&nbsp;<strong> carbon-neutral</strong> &nbsp;delivery</span>
+    </div>
+    <button class="bg-orange-700 text-white font-semibold w-full mt-4 py-2 rounded-lg hover:bg-orange-800 transition">Confirm Order</button>
+  `;
+
+  document.querySelector("h3").textContent = `Your Cart(${cantidad})`;
+}
