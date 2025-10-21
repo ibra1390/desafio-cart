@@ -99,9 +99,7 @@ const productos = [
         "price": 6.50
      }
 ];
-
 // --- FUNCIONES PARA CONTROLAR EL BOTÓN DE CANTIDAD ---
-
 function renderBotonCantidad(button, cantidad) {
   // Esta función reemplaza el contenido del botón según la cantidad
   if (cantidad > 0) {
